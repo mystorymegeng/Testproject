@@ -7,6 +7,15 @@ import '../Logincss/Login_v1/css/util.css';
 import firebase from 'firebase';
 import { Button, Form, FormGroup, Label, Input, Col,Row,Card,CardBody,CardTitle } from 'reactstrap';
 import { BrowserRouter, Route, NavLink } from 'react-router-dom'
+import { createBrowserHistory } from 'history';
+import Login from'./login';
+export const setpath = createBrowserHistory();
+
+const login = () => (
+  <BrowserRouter>
+    <Login />
+  </BrowserRouter>
+)
 
 /// Initialize Firebase
 const auth = firebase.auth;
@@ -39,8 +48,11 @@ onRegisterButtonPress = () => {
   this.setState({ loading: true });
   auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
-          this.setState({ loading: false });
+          //this.setState({ loading: false });
           alert("Register Successful , " + email + " " + password);
+          window.location.reload();
+          setpath.push('/');
+          return <Route path="/" component={login} />
       })
       .catch((msgError) => {
           this.setState({ loading: false });
