@@ -22,7 +22,7 @@ var config = {
   storageBucket: "project4-2-42312.appspot.com",
   messagingSenderId: "1000029040402"
 };
-// firebase.initializeApp(config);
+ firebase.initializeApp(config);
 
 class App extends Component {
 
