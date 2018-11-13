@@ -9,25 +9,15 @@ import {BrowserRouter, Route ,NavLink} from 'react-router-dom'
 import { Router, Switch } from 'react-router'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-const routes = [
-  {
-    path: "/register",
-    exact: true,
-    main: () => <Register />
-  },
-];
-
+import firebase from 'firebase';
 const register = () => (
   <BrowserRouter>
     <Register />
   </BrowserRouter>
 )
 
-const Home = () => <h1>Home</h1>
-const About = () => <h1>About</h1>
-const Post = () => <h1>Post</h1>
-const Project = () => <h1>Project</h1>
-
+const auth = firebase.auth;
+const db = firebase.database;
 
 class Login extends Component {
 
@@ -38,12 +28,9 @@ class Login extends Component {
 
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      uid:"",
     };
-  }
-
-  getInitialState() {
-    
   }
 
   handleEmailChange(e) {
@@ -56,7 +43,13 @@ class Login extends Component {
 
   login(){
     alert(this.state.email+' : '+this.state.password);
-
+    auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(value => {
+        
+        console.log("test : "+value.user.uid);
+      }).catch(error => {
+        this.openDialog1();
+      });
+      alert(this.state.uid);
   }
 
   register(){
@@ -68,20 +61,8 @@ class Login extends Component {
 
   render() {
     return (
-      
-      // <div className="App container">
-      //   <Route path="/" component={Home} />
-      //   <Route path="/about" component={About} />
-      //   <Route path="/posts" component={Post} />
-      //   <Route path="/projects" component={Project} />
-      // </div>
-
+    
       <div className="limiter">
-         <Route path="/home" component={Home} />
-         <Route path="/about" component={About} />
-         <Route path="/posts" component={Post} />
-         <Route path="/projects" component={Project} />
-         <Route path="/register" component={routes} />
 
         <div className="container-login100">
           <div className="wrap-login100">
@@ -110,6 +91,7 @@ class Login extends Component {
                 <button className="login100-form-btn" onClick={this.login.bind(this)}>
 							    Login
 						    </button>
+                <Button className="login100-form-btn" onClick={this.login.bind(this)}>Login</Button>
                 
               </div>
               <div class="text-center p-t-70">

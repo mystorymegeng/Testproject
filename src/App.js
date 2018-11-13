@@ -10,6 +10,8 @@ import Login from './Page/login';
 import {BrowserRouter, Route ,NavLink} from 'react-router-dom'
 import { Router, Switch } from 'react-router'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import firebase from 'firebase';
+import DB_CONFIG from './config';
 
 const routes = [
   {
@@ -30,14 +32,22 @@ const About = () => <h1>About</h1>
 const Post = () => <h1>Post</h1>
 const Project = () => <h1>Project</h1>
 
+var config = {
+  apiKey: "AIzaSyDSUJXonVzBs0zj1izOrGsBbxmBe7FC0W4",
+  authDomain: "project4-2-42312.firebaseapp.com",
+  databaseURL: "https://project4-2-42312.firebaseio.com",
+  projectId: "project4-2-42312",
+  storageBucket: "project4-2-42312.appspot.com",
+  messagingSenderId: "1000029040402"
+};
+// firebase.initializeApp(config);
 
 class App extends Component {
-
-
 
   constructor(props) {
     super(props);
 
+    // Initialize Firebase
     this.state = {
       email: "",
       password: ""

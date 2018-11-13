@@ -4,15 +4,30 @@ import '../App.css';
 import '../Logincss/Login_v1/css/main.css';
 import '../Logincss/Login_v1/css/util.css';
 
+import DB_CONFIG from '../config';
+import firebase from 'firebase';
+
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import {BrowserRouter, Route ,NavLink} from 'react-router-dom'
 
-const Home = () => <h1>Home</h1>
-const About = () => <h1>About</h1>
-const Post = () => <h1>Post</h1>
-const Project = () => <h1>Project</h1>
+// Initialize Firebase
 
 class Register extends Component {
+
+  
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+     test: 0
+    };
+  }
+
+  componentDidMount(){
+    
+  }
+
   render() {
     return (
       
@@ -22,6 +37,7 @@ class Register extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+          <Input  type="email" name="email" placeholder="Email" value={this.state.test} />
           <a
             className="App-link"
             href="https://reactjs.org"
