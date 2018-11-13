@@ -122,6 +122,12 @@ button {
 	background: transparent;
 }
 
+Button{
+  outline: none !important;
+	border: none;
+	background: transparent;
+}
+
 button:hover {
 	cursor: pointer;
 }
@@ -348,9 +354,13 @@ iframe {
   transition: all 0.4s;
 }
 
+
 .login100-form-btn:hover {
   background: #333333;
 }
+
+/* /////////////////////////////////////////////////////////// */
+
 
 
 

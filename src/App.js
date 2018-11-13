@@ -13,6 +13,24 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import firebase from 'firebase';
 import DB_CONFIG from './config';
 
+const routes = [
+  {
+    path: "/register",
+    exact: true,
+    main: () => <Register />
+  },
+];
+
+const register = () => (
+  <BrowserRouter>
+    <Register />
+  </BrowserRouter>
+)
+
+const Home = () => <h1>Home</h1>
+const About = () => <h1>About</h1>
+const Post = () => <h1>Post</h1>
+const Project = () => <h1>Project</h1>
 
 var config = {
   apiKey: "AIzaSyDSUJXonVzBs0zj1izOrGsBbxmBe7FC0W4",

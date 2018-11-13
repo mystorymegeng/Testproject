@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import '../App.css';
 import '../Logincss/Login_v1/css/main.css';
 import '../Logincss/Login_v1/css/util.css';
 import imglogin from '../Logincss/Login_v1/images/img-01.png';
+import App from '../App';
 import Register from '../Page/Register';
 
 import { BrowserRouter, Route, NavLink } from 'react-router-dom'
-import { Router, Switch } from 'react-router'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
+import { createBrowserHistory } from 'history';
 import firebase from 'firebase';
 const register = () => (
   <BrowserRouter>
@@ -18,6 +20,8 @@ const register = () => (
 
 const auth = firebase.auth;
 const db = firebase.database;
+
+export const setpath = createBrowserHistory();
 
 class Login extends Component {
 
@@ -31,6 +35,7 @@ class Login extends Component {
       password: "",
       uid: "",
     };
+
   }
 
   handleEmailChange(e) {
@@ -41,20 +46,23 @@ class Login extends Component {
     this.setState({ password: e.target.value });
   }
 
-  login() {
+  login(e) {
     alert(this.state.email + ' : ' + this.state.password);
     auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(value => {
         console.log("test : " + value.user.uid);
+        window.location.reload();
+        setpath.push('/register');
+        //window.location.reload();
       }).catch(error => {
-        this.openDialog1();
+        alert("โปรดใส่ข้อมูลให้ถูกต้อง");
       });
-    alert(this.state.uid);
   }
 
   register() {
     alert('test');
     return <Route path="/register" component={register} />
+
   }
 
 
@@ -88,20 +96,12 @@ class Login extends Component {
                 </span>
               </div>
               <div class="container-login100-form-btn">
-                <button className="login100-form-btn" onClick={this.login.bind(this)}>
-<<<<<<< HEAD
-							    Login
-                </button>
                 
-=======
-                  Login
-						    </button>
-                <Button className="login100-form-btn" onClick={this.login.bind(this)}>Login</Button>
+                <buttonlogin className="login100-form-btn" onClick={this.login.bind(this)}>Login</buttonlogin>
 
->>>>>>> bfc4bf5d894ed108cd730642cd55d78238475410
               </div>
               <div class="text-center p-t-70">
-                <a class="txt2" href="/register" onClick={this.register.bind(this)}>
+                <a class="txt2" href="/register" >
                   Create your Account
 							    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                 </a>
