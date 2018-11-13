@@ -42,9 +42,7 @@ class Login extends Component {
     };
   }
 
-  getInitialState() {
-    
-  }
+  
 
   handleEmailChange(e) {
     this.setState({email: e.target.value});
