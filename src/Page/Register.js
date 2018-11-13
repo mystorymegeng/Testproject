@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import App from '../App';
 import logo from '../logo.svg';
 import '../App.css';
 import '../Logincss/Login_v1/css/main.css';
@@ -8,7 +9,7 @@ import { Button, Form, FormGroup, Label, Input, Col,Row,Card,CardBody,CardTitle 
 import { BrowserRouter, Route, NavLink } from 'react-router-dom'
 
 /// Initialize Firebase
-
+const auth = firebase.auth;
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +37,7 @@ onRegisterButtonPress = () => {
   const { email, password } = this.state;
 
   this.setState({ loading: true });
-  firebase.auth().createUserWithEmailAndPassword(email, password)
+  auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
           this.setState({ loading: false });
           alert("Register Successful , " + email + " " + password);
