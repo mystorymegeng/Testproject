@@ -10,7 +10,7 @@ import firebase from 'firebase';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import {BrowserRouter, Route ,NavLink} from 'react-router-dom'
 
-// Initialize Firebase
+/// Initialize Firebase
 
 class Register extends Component {
 
