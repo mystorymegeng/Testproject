@@ -50,7 +50,7 @@ class App extends Component {
       
     <BrowserRouter>
       <Switch>
-        <Route exact path="/login" render={props => <Login {...props} />} />
+        <Route exact path="/" render={props => <Login {...props} />} />
         <Route exact path="/register" render={props => <Register {...props} />} />
         
       </Switch>
