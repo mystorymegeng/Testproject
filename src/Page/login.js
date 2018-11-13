@@ -90,8 +90,7 @@ class Login extends Component {
               <div class="container-login100-form-btn">
                 <button className="login100-form-btn" onClick={this.login.bind(this)}>
 							    Login
-						    </button>
-                <Button className="login100-form-btn" onClick={this.login.bind(this)}>Login</Button>
+                </button>
                 
               </div>
               <div class="text-center p-t-70">
